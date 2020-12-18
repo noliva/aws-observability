@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  collector:
+    image: amazon/aws-otel-collector:latest
+    command: [ "--config=/etc/otel-agent-config.yaml", "--log-level=DEBUG" ]
+    environment:
+      - AWS_REGION=eu-west-1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ./config-test.yaml:/etc/otel-agent-config.yaml
+      - ~/.aws:/root/.aws:ro
+    ports:
+      - "55680:55680"
