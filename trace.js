@@ -15,6 +15,14 @@ module.exports = (serviceName, url) => {
             express: {
                 enabled: true,
                 path: '@opentelemetry/plugin-express'
+            },
+            'aws-sdk': {
+                enabled: true,
+                path: "opentelemetry-plugin-aws-sdk",
+            },
+            https: {
+                enabled: true,
+                path: '@opentelemetry/plugin-https',
             }
         }
     });
